@@ -19,12 +19,11 @@ H = MakeStochasticByRow(H, k);
 
 indexes = splitToParts(dangling, m, k);
 % moramo formirati matricu F1
-F = formLumpedMatrix(H, v, indexes, alpha, varargin{:});
-
+[u, F] = formLumpedMatrix(H, v, indexes, alpha, varargin{:});
 epsilon=1e-5; %tocnost
-
 % metoda potencija za matricu F
 sigma = ones(1, k+m) / (k+m);
 [sigma, iter] = Potencije(F, sigma, epsilon, 1000);
-pr = [sigma(1:k) sigma * F(:,k+1:k+m)];
+u = u';
+pr = [sigma(1:k) sigma * [H(1:k, k+1:n); u(:,k+1:n)]];
 end

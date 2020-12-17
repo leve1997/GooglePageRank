@@ -1,4 +1,4 @@
-function F = formLumpedMatrix(H,v,indexes,alpha,varargin)
+function [u, F] = formLumpedMatrix(H,v,indexes,alpha,varargin)
 % inicijalizacija
 m = nargin - 4;
 k = indexes(2,1);
