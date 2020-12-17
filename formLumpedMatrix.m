@@ -1,10 +1,10 @@
-function [u, F] = formLumpedMatrix(H,v,indexes,alpha,varargin)
+function [u, F] = formLumpedMatrix(H,v,indexes,alpha,w)
 % inicijalizacija
-m = nargin - 4;
+m = max(size(w(1,:)));
 k = indexes(2,1);
 F = zeros(k+m);
 % treba nam taj u
-u = formLumpedVectors(v, alpha, varargin{:});
+u = formLumpedVectors(v, alpha, w);
 
 %prvi stupac
 F(1:k, 1:k) = H(1:k, 1:k);
