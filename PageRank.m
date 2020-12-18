@@ -11,7 +11,7 @@ function [pr, perm, iter] = PageRank(H,v,w,alpha)
 %   
 %%
 [H, k, perm] = SendDanglingNodesToEnd(H);
-H = MakeStochasticByRow(H, k);
+H = MakeStochasticByRowK(H, k);
 n= max(size(H));
 sigma = ones(1, k+1)/(k+1);
 H11 = H(1:k, 1:k);
